@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="74932ef4-2cbb-49a0-8cf9-f4573399719c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="ProjectId" id="1WjceAFiuvYaaP8ajaOBYclvdTs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gitrisk" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="gitrisk" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build main.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="109" y="-1047" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579667525299">
+      <screen x="-635" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="109" y="-1047" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579667525299" />
+    <state x="362" y="-1073" key="#go_build_main.go" timestamp="1579666677421">
+      <screen x="-635" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="362" y="-1073" key="#go_build_main.go/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579666677421" />
+    <state x="408" y="-998" width="1018" height="579" key="#xdebugger.evaluate" timestamp="1579669679046">
+      <screen x="-635" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="408" y="-998" width="1018" height="579" key="#xdebugger.evaluate/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579669679046" />
+    <state width="528" height="466" key="DebuggerActiveHint" timestamp="1579670646451">
+      <screen x="-635" y="-1417" width="2560" height="1417" />
+    </state>
+    <state width="528" height="466" key="DebuggerActiveHint/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670646451" />
+    <state width="1398" height="501" key="GridCell.Tab.0.bottom" timestamp="1579683237285">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.0.bottom/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638067" />
+    <state width="1398" height="501" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1579683237285" />
+    <state width="1398" height="501" key="GridCell.Tab.0.center" timestamp="1579683237285">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.0.center/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638065" />
+    <state width="1398" height="501" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1579683237285" />
+    <state width="1398" height="501" key="GridCell.Tab.0.left" timestamp="1579683237285">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.0.left/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638065" />
+    <state width="1398" height="501" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1579683237285" />
+    <state width="1398" height="501" key="GridCell.Tab.0.right" timestamp="1579683237285">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.0.right/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638066" />
+    <state width="1398" height="501" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1579683237285" />
+    <state width="1398" height="501" key="GridCell.Tab.1.bottom" timestamp="1579683237286">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.1.bottom/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638419" />
+    <state width="1398" height="501" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1579683237286" />
+    <state width="1398" height="501" key="GridCell.Tab.1.center" timestamp="1579683237286">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.1.center/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638418" />
+    <state width="1398" height="501" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1579683237286" />
+    <state width="1398" height="501" key="GridCell.Tab.1.left" timestamp="1579683237286">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.1.left/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638418" />
+    <state width="1398" height="501" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1579683237286" />
+    <state width="1398" height="501" key="GridCell.Tab.1.right" timestamp="1579683237286">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="2518" height="501" key="GridCell.Tab.1.right/0.23.1440.877/-635.-1417.2560.1417@-635.-1417.2560.1417" timestamp="1579670638419" />
+    <state width="1398" height="501" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1579683237286" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/main.go</url>
+          <line>51</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/main.go</url>
+          <line>40</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/main.go</url>
+          <line>49</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/main.go</url>
+          <line>35</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
