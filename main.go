@@ -3,15 +3,25 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/kardianos/osext"
 	"log"
 	"os"
 	"os/exec"
 	"strings"
 )
 
+type File struct {
+	File string
+	Log  []Log
+}
+
+type Log struct {
+	Date string
+}
+
 func main() {
-	cmd := exec.Command("git", "-C", getExecutingFolder(), "ls-files")
+
+	workingDir := getWorkingDir()
+	cmd := exec.Command("git", "-C", workingDir, "ls-files")
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	err := cmd.Run()
@@ -19,27 +29,17 @@ func main() {
 		log.Fatal(err)
 	}
 
+	var items []File
 	files := strings.Split(out.String(), "\n")
 	for _, file := range files {
-		//getLog(file)
-		runBasicExample(file)
+		items = append(items, File{File: file})
+		getLog(workingDir + "/" + file)
 	}
 
 }
 
-func runBasicExample(file string) {
-	cmdOut := exec.Command("git", "log", "/Users/joseph.woodward/Documents/git/AccountWeb/tests/JustEat.AccountWeb.Tests.Integration/HomepageTests.cs")
-	var stOut bytes.Buffer
-	cmdOut.Stdout = &stOut
-	cmdOut.Run()
-
-	fmt.Println(stOut.String())
-
-}
-
 func getLog(file string) {
-	//cmd := exec.Command("git", "log", "~/Documents/git/AccountWeb/tests/JustEat.AccountWeb.Tests.Integration/HomepageTests.cs", "--pretty='format: %ad'", "--date=short", "-- \"$1\"")
-	cmd := exec.Command("git", "log", "/Users/joseph.woodward/Documents/git/AccountWeb/tests/JustEat.AccountWeb.Tests.Integration/HomepageTests.cs")
+	cmd := exec.Command("git", "log", "--pretty=%ad", "--date=short", file)
 	var stOut bytes.Buffer
 	var stErr bytes.Buffer
 	cmd.Stdout = &stOut
@@ -47,17 +47,17 @@ func getLog(file string) {
 	err := cmd.Run()
 	if err != nil {
 		log.Fatalf(stErr.String(), "There was an error running the git command: ", err)
-		os.Exit(1)	}
+		os.Exit(1)
+	}
 
 	fmt.Println(stOut.String())
 }
 
-
-func getExecutingFolder() string {
-	_, err := osext.ExecutableFolder()
+func getWorkingDir() string {
+	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	return "/Users/joseph.woodward/Documents/git/AccountWeb"
+	return dir
 }
