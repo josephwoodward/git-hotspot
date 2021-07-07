@@ -31,15 +31,17 @@ func main() {
 
 	var items []File
 	files := strings.Split(out.String(), "\n")
+
+	c := make(chan File)
 	for _, file := range files {
 		items = append(items, File{File: file})
-		getLog(workingDir + "/" + file)
+		getLog(c, workingDir + "/" + file)
 	}
 
 }
 
-func getLog(file string) {
-	cmd := exec.Command("git", "log", "--pretty=%ad", "--date=short", file)
+func getLog(c chan File, path string) {
+	cmd := exec.Command("git", "log", "--pretty=%ad", "--date=short", path)
 	var stOut bytes.Buffer
 	var stErr bytes.Buffer
 	cmd.Stdout = &stOut
@@ -51,6 +53,7 @@ func getLog(file string) {
 	}
 
 	fmt.Println(stOut.String())
+	//c <- &File{Log: }
 }
 
 func getWorkingDir() string {
