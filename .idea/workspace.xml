@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="BranchesTreeState">
     <expand>
@@ -24,6 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="74932ef4-2cbb-49a0-8cf9-f4573399719c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/git-hotspot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logfetcher.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,9 +40,18 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="do-lon1-k8s-1-16-6-do-2-lon1-1584706744465" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1WjceAFiuvYaaP8ajaOBYclvdTs" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -48,25 +59,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "RunOnceActivity.go.watchers.conflict.with.on.save.actions.check.performed": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/josephwoodward",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hotspot" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/logfetch" />
     </key>
@@ -76,9 +90,9 @@
       <module name="gitrisk" />
       <working_directory value="$PROJECT_DIR$/" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/main.go" />
       <package value="gitrisk" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -101,79 +115,18 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593387942877">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1593387942877" />
-    <state x="432" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593389233883">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="432" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1593389233883" />
-    <state x="483" y="172" key="#xdebugger.evaluate" timestamp="1600217921384">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="483" y="172" key="#xdebugger.evaluate/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600217921384" />
-    <state x="483" y="172" key="#xdebugger.evaluate/0.23.1440.877@0.23.1440.877" timestamp="1599958675753" />
-    <state width="470" height="466" key="DebuggerActiveHint" timestamp="1600215909540">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="470" height="466" key="DebuggerActiveHint/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600215909540" />
-    <state width="470" height="466" key="DebuggerActiveHint/0.23.1440.877@0.23.1440.877" timestamp="1599958165013" />
-    <state width="1398" height="286" key="GridCell.Tab.0.bottom" timestamp="1600218048889">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.0.bottom/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048889" />
-    <state width="1398" height="286" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599958679485" />
-    <state width="1398" height="286" key="GridCell.Tab.0.center" timestamp="1600218048888">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.0.center/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048888" />
-    <state width="1398" height="286" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1599958679484" />
-    <state width="1398" height="286" key="GridCell.Tab.0.left" timestamp="1600218048888">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.0.left/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048888" />
-    <state width="1398" height="286" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1599958679484" />
-    <state width="1398" height="286" key="GridCell.Tab.0.right" timestamp="1600218048888">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.0.right/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048888" />
-    <state width="1398" height="286" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1599958679485" />
-    <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1600218048889">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.bottom/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048889" />
-    <state width="1398" height="286" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1599958679486" />
-    <state width="1398" height="286" key="GridCell.Tab.1.center" timestamp="1600218048889">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.center/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048889" />
-    <state width="1398" height="286" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1599958679485" />
-    <state width="1398" height="286" key="GridCell.Tab.1.left" timestamp="1600218048889">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.left/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048889" />
-    <state width="1398" height="286" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1599958679485" />
-    <state width="1398" height="286" key="GridCell.Tab.1.right" timestamp="1600218048889">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1398" height="286" key="GridCell.Tab.1.right/0.23.1440.877/-632.-1417.2560.1417@0.23.1440.877" timestamp="1600218048889" />
-    <state width="1398" height="286" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1599958679486" />
-    <state x="143" y="129" key="SettingsEditor" timestamp="1599958732455">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state x="143" y="129" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1599958732455" />
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/main.go</url>
-          <line>54</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/hotspot/hotspot.go</url>
+          <line>29</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
