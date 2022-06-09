@@ -1,3 +1,3 @@
-module github.com/JosephWoodward/git-hotspot
+module git-hotspot
 
 go 1.18

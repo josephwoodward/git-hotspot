@@ -1,6 +1,7 @@
 package main
 
 import (
+	"git-hotspot/hotspot"
 	"log"
 	"os"
 )
@@ -8,7 +9,7 @@ import (
 func main() {
 	dir, err := os.Getwd()
 	if err != nil {
-		log.Fatalf("unable to get current working directory: %w", err)
+		log.Fatalf("unable to get current working directory: %v", err)
 	}
 
 	if err := hotspot.Run(dir); err != nil {
