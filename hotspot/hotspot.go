@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"sync"
 	"time"
 )
 
@@ -29,36 +30,36 @@ func Run(dir string) error {
 
 	// Iterate over all files in repo
 	files := bytes.Split(list, []byte("\n"))
-	done := make(chan struct{})
+	var wg sync.WaitGroup
+
 	i := 0
-	for f := range modifications(ctx, done, files) {
-		if i == 4 {
-			done <- struct{}{}
-		}
-		fmt.Println(len(f.Logs))
+	for f := range modifications(ctx, files, wg) {
 		i++
+		fmt.Println(len(f.Logs))
+		if i == 4 {
+			break
+		}
 	}
 
-	//c := make(chan File)
-	//for _, file := range files {
-	//	items = append(items, File{File: file})
-	//	//getLog(c, dir+"/"+file)
-	//}
+	wg.Wait()
 
 	return nil
 }
 
 // modifications reports the number of edits
-func modifications(ctx context.Context, done <-chan struct{}, files [][]byte) <-chan File {
+func modifications(ctx context.Context, files [][]byte, wg sync.WaitGroup) <-chan File {
 	results := make(chan File)
 
-	for _, f := range files {
-		if len(f) == 0 {
+	for _, v := range files {
+		if len(v) == 0 {
 			continue
 		}
 
-		go func(done <-chan struct{}, fi []byte) {
-			f := string(fi)
+		go func(file []byte) {
+			wg.Add(1)
+			defer wg.Done()
+
+			f := string(file)
 			logs, err := exec.Command("git", "log", "--pretty=%ad", "--date=short", f).Output()
 			if err != nil {
 				os.Exit(1)
@@ -66,17 +67,11 @@ func modifications(ctx context.Context, done <-chan struct{}, files [][]byte) <-
 
 			time.Sleep(1 * time.Second)
 
-			r := File{
+			results <- File{
 				File: f,
 				Logs: logs,
 			}
-			select {
-			case <-done:
-				return
-			case results <- r:
-			}
-		}(done, f)
-
+		}(v)
 	}
 
 	return results
