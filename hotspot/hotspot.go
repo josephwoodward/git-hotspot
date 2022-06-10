@@ -2,15 +2,17 @@ package hotspot
 
 import (
 	"bytes"
+	"context"
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
+	"time"
 )
 
 type File struct {
 	File string
 	Log  []Log
+	Logs []byte
 }
 
 type Log struct {
@@ -23,11 +25,19 @@ func Run(dir string) error {
 		return err
 	}
 
-	//var items []File
-	files := bytes.Split(list, []byte("\n"))
-	//files := strings.Split(list, "\n")
+	ctx := context.Background()
 
-	_ = files
+	// Iterate over all files in repo
+	files := bytes.Split(list, []byte("\n"))
+	done := make(chan struct{})
+	i := 0
+	for f := range modifications(ctx, done, files) {
+		if i == 4 {
+			done <- struct{}{}
+		}
+		fmt.Println(len(f.Logs))
+		i++
+	}
 
 	//c := make(chan File)
 	//for _, file := range files {
@@ -38,18 +48,36 @@ func Run(dir string) error {
 	return nil
 }
 
-func getLog(c chan File, path string) {
-	cmd := exec.Command("git", "log", "--pretty=%ad", "--date=short", path)
-	var stOut bytes.Buffer
-	var stErr bytes.Buffer
-	cmd.Stdout = &stOut
-	cmd.Stderr = &stErr
-	err := cmd.Run()
-	if err != nil {
-		log.Fatalf(stErr.String(), "There was an error running the git command: ", err)
-		os.Exit(1)
+// modifications reports the number of edits
+func modifications(ctx context.Context, done <-chan struct{}, files [][]byte) <-chan File {
+	results := make(chan File)
+
+	for _, f := range files {
+		if len(f) == 0 {
+			continue
+		}
+
+		go func(done <-chan struct{}, fi []byte) {
+			f := string(fi)
+			logs, err := exec.Command("git", "log", "--pretty=%ad", "--date=short", f).Output()
+			if err != nil {
+				os.Exit(1)
+			}
+
+			time.Sleep(1 * time.Second)
+
+			r := File{
+				File: f,
+				Logs: logs,
+			}
+			select {
+			case <-done:
+				return
+			case results <- r:
+			}
+		}(done, f)
+
 	}
 
-	fmt.Println(stOut.String())
-	//c <- &File{Log: }
+	return results
 }

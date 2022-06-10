@@ -12,5 +12,7 @@ func TestHotspot(t *testing.T) {
 		t.Fatalf("failed getting current working directory: %v", err)
 	}
 
-	hotspot.Run(dir)
+	if err := hotspot.Run(dir); err != nil {
+		t.Fatal(err)
+	}
 }
