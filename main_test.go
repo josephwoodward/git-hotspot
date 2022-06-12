@@ -1,6 +1,7 @@
 package main_test
 
 import (
+	"context"
 	"git-hotspot/hotspot"
 	"os"
 	"testing"
@@ -12,7 +13,7 @@ func TestHotspot(t *testing.T) {
 		t.Fatalf("failed getting current working directory: %v", err)
 	}
 
-	if err := hotspot.Run(dir); err != nil {
+	if err := hotspot.Run(context.Background(), dir); err != nil {
 		t.Fatal(err)
 	}
 }
