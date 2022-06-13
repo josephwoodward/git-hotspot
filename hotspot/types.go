@@ -20,5 +20,5 @@ func (d dataSlice) Swap(i, j int) {
 
 // Less is part of sort.Interface. We use count as the value to sort by
 func (d dataSlice) Less(i, j int) bool {
-	return len(d[i].dates) < len(d[j].dates)
+	return len(d[i].dates) > len(d[j].dates)
 }

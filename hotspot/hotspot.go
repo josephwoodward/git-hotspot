@@ -3,10 +3,12 @@ package hotspot
 import (
 	"bytes"
 	"context"
-	"log"
+	"os"
 	"os/exec"
 	"sort"
 	"sync"
+
+	"github.com/rodaine/table"
 )
 
 func Run(ctx context.Context, dir string) error {
@@ -50,13 +52,17 @@ func Run(ctx context.Context, dir string) error {
 
 	sort.Sort(s)
 
-	//for i := range s {
-	//	log.Printf("%s: %v", total[i].path, len(total[i].dates))
-	//}
+	// Print results
+	tbl := table.
+		New("File", "# Modifications").
+		WithWriter(os.Stdout).
+		WithPadding(5)
+
 	for _, d := range s {
-		//fmt.Printf("%+v\n", *d.dates)
-		log.Printf("%s: %v", d.path, len(d.dates))
+		tbl.AddRow(d.path, len(d.dates))
 	}
+
+	tbl.Print()
 
 	return nil
 }
