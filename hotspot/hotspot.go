@@ -3,17 +3,11 @@ package hotspot
 import (
 	"bytes"
 	"context"
-	"fmt"
-	"os"
+	"log"
 	"os/exec"
+	"sort"
 	"sync"
-	"time"
 )
-
-type File struct {
-	File  string
-	Dates []string
-}
 
 func Run(ctx context.Context, dir string) error {
 	list, err := exec.Command("git", "-C", dir, "ls-files").Output()
@@ -21,7 +15,7 @@ func Run(ctx context.Context, dir string) error {
 		return err
 	}
 
-	results := make(chan File)
+	results := make(chan file)
 
 	// Iterate over all files in repo
 	files := bytes.Split(list, []byte("\n"))
@@ -34,37 +28,45 @@ func Run(ctx context.Context, dir string) error {
 		wg.Add(1)
 		go func(f []byte) {
 			defer wg.Done()
-			modifications(ctx, string(f), results, wg)
+			modifications(ctx, string(f), results)
 		}(f)
 	}
 
-	var total []File
+	var total []file
 	go func() {
 		for f := range results {
 			total = append(total, f)
 		}
 	}()
 
-	//sort.Slice(total, func (d, e int) bool {
-	//	return a[d].size < a[e].size
-	//})
-
 	wg.Wait()
 	close(results)
 
-	fmt.Println("Done")
+	// Sort results
+	s := make(dataSlice, 0, len(total))
+	for k, _ := range total {
+		s = append(s, &total[k])
+	}
+
+	sort.Sort(s)
+
+	//for i := range s {
+	//	log.Printf("%s: %v", total[i].path, len(total[i].dates))
+	//}
+	for _, d := range s {
+		//fmt.Printf("%+v\n", *d.dates)
+		log.Printf("%s: %v", d.path, len(d.dates))
+	}
 
 	return nil
 }
 
 // modifications reports the number of edits
-func modifications(_ context.Context, file string, results chan<- File, wg sync.WaitGroup) {
-	logs, err := exec.Command("git", "log", "--pretty=%ad", "--date=short", file).Output()
+func modifications(_ context.Context, path string, results chan<- file) {
+	logs, err := exec.Command("git", "log", "--pretty=%ad", "--date=short", path).Output()
 	if err != nil {
-		os.Exit(1)
+		results <- file{path: path, err: err, dates: nil}
 	}
-
-	time.Sleep(300 * time.Millisecond)
 
 	l := bytes.Split(logs, []byte("\n"))
 
@@ -74,9 +76,7 @@ func modifications(_ context.Context, file string, results chan<- File, wg sync.
 			dates = append(dates, string(v))
 		}
 	}
-	results <- File{
-		File:  file,
-		Dates: dates,
-	}
+
+	results <- file{path: path, dates: dates}
 	return
 }
