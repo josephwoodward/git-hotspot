@@ -14,6 +14,9 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+# Artifact
+git-hotspot
+
 # Tools
 .idea
 .vscode
