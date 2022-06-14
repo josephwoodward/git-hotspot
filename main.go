@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"git-hotspot/hotspot"
 	"log"
 	"os"
@@ -14,9 +13,11 @@ func main() {
 		log.Fatalf("unable to get current working directory: %v", err)
 	}
 
-	if err = hotspot.Run(context.Background(), dir); err != nil {
-		log.Fatal(err)
+	if _, err := os.Stat(dir + "/.git"); os.IsNotExist(err) {
+		log.Fatal(".git directory does not exist in current directory")
 	}
 
-	fmt.Println("Done")
+	if err = hotspot.Run(context.Background(), dir, 15); err != nil {
+		log.Fatal(err)
+	}
 }

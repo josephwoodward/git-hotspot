@@ -11,7 +11,7 @@ import (
 	"github.com/rodaine/table"
 )
 
-func Run(ctx context.Context, dir string) error {
+func Run(ctx context.Context, dir string, limit int) error {
 	list, err := exec.Command("git", "-C", dir, "ls-files").Output()
 	if err != nil {
 		return err
@@ -37,6 +37,10 @@ func Run(ctx context.Context, dir string) error {
 	var total []file
 	go func() {
 		for f := range results {
+			if len(f.dates) == 0 {
+				continue
+			}
+
 			total = append(total, f)
 		}
 	}()
@@ -55,11 +59,15 @@ func Run(ctx context.Context, dir string) error {
 	// Print results
 	tbl := table.
 		New("File", "# Modifications").
-		WithWriter(os.Stdout).
-		WithPadding(5)
+		WithWriter(os.Stdout)
 
+	i := 0
 	for _, d := range s {
+		if i == limit {
+			break
+		}
 		tbl.AddRow(d.path, len(d.dates))
+		i++
 	}
 
 	tbl.Print()
@@ -83,6 +91,9 @@ func modifications(_ context.Context, path string, results chan<- file) {
 		}
 	}
 
-	results <- file{path: path, dates: dates}
+	if len(dates) > 0 {
+		results <- file{path: path, dates: dates}
+	}
+
 	return
 }
