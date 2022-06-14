@@ -15,7 +15,7 @@
 # vendor/
 
 # Artifact
-git-hotspot
+bin/git-hotspot
 
 # Tools
 .idea
