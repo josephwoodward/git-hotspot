@@ -111,8 +111,9 @@ func parseConfig(cli GitCommands) (map[string]struct{}, error) {
 	paths := map[string]struct{}{}
 
 	for _, v := range ignores {
-		k := string(v)
-		paths[k] = struct{}{}
+		if len(v) > 0 {
+			paths[string(v)] = struct{}{}
+		}
 	}
 
 	return paths, err

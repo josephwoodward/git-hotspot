@@ -7,17 +7,25 @@ import (
 )
 
 func TestParseConfig(t *testing.T) {
-	config, err := parseConfig(cliStub{})
+	// Arrange
+	cli := cliStub{config: func() ([]byte, error) {
+		return []byte("/vendor/\n/something/\n"), nil
+	}}
 
+	// Act
+	config, err := parseConfig(cli)
+
+	// Assert
 	assert.Nil(t, err, "failed to parse config")
 	assert.Len(t, config, 2)
 }
 
-type cliStub struct{}
+type cliStub struct {
+	config func() ([]byte, error)
+}
 
 func (c cliStub) Config() ([]byte, error) {
-	l := "/vendor/\n/something/"
-	return []byte(l), nil
+	return c.config()
 }
 
 func (c cliStub) Files() ([]byte, error) {
