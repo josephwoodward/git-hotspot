@@ -11,16 +11,19 @@ import (
 	"github.com/rodaine/table"
 )
 
-func Run(ctx context.Context, dir string, limit int) error {
-	list, err := exec.Command("git", "-C", dir, "ls-files").Output()
+func Run(ctx context.Context, git GitCommands, limit int) error {
+	_, err := parseConfig(git)
+
+	// List Files
+	result, err := git.Files()
 	if err != nil {
 		return err
 	}
 
 	results := make(chan file)
 
-	// Iterate over all files in repo
-	files := bytes.Split(list, []byte("\n"))
+	// Iterate over all Files in repo
+	files := bytes.Split(result, []byte("\n"))
 	var wg sync.WaitGroup
 	for _, f := range files {
 		if len(f) == 0 {
@@ -96,4 +99,21 @@ func modifications(_ context.Context, path string, results chan<- file) {
 	}
 
 	return
+}
+
+func parseConfig(cli GitCommands) (map[string]struct{}, error) {
+	result, err := cli.Config()
+	if err != nil {
+		return nil, err
+	}
+
+	ignores := bytes.Split(result, []byte("\n"))
+	paths := map[string]struct{}{}
+
+	for _, v := range ignores {
+		k := string(v)
+		paths[k] = struct{}{}
+	}
+
+	return paths, err
 }

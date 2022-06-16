@@ -22,3 +22,8 @@ func (d dataSlice) Swap(i, j int) {
 func (d dataSlice) Less(i, j int) bool {
 	return len(d[i].dates) > len(d[j].dates)
 }
+
+type GitCommands interface {
+	Config() ([]byte, error)
+	Files() ([]byte, error)
+}
