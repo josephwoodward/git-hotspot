@@ -9,7 +9,7 @@ Why is this useful? For a few reasons:
 
 ## Usage 
 
-```
+```bash
 $ git clone https://github.com/grafana/tempo.git
 $ cd tempo
 $ git hotspot
@@ -40,7 +40,7 @@ Requirements:
 
 Clone this repo then run the following in your CLI:
 
-```
+```bash
 $ make build  
 $ make install
 ```
