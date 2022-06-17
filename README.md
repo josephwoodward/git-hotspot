@@ -1,8 +1,13 @@
-# Git Hotspot
+# Git Hotspot Extension
 
-Git Hotspot is a git extension that you can use to identify which files in a git repository are modified the most.
+Git Hotspot is a git extension that identifies 'hot' files (tracked files in a git repository which are modified the most).
 
-For example:
+Why is this useful? For a few reasons:
+
+- When starting in a new codebase, I often find it helpful to start by reviewing files which are edited most often
+- Files that get a large amount of churn are often good candidates to refactor as it often means it's doing too much. This is especially true in languages that favor one type or class per file.
+
+### Usage 
 
 ```
 $ git clone https://github.com/grafana/tempo.git
@@ -27,11 +32,13 @@ tempodb/search/searchable_block.go                   3
 integration/bench/stress_test_write_path.js          3
 ```
 
+
+
 ### Installation
 
-Requires:
+Requirements:
 - git
-- Go version 1.18
+- Go version 1.18 or above
 
 Clone this repo then run the following in your CLI:
 
@@ -40,5 +47,5 @@ $ make build
 $ make install
 ```
 
-Now navigate to a git repo and run `git hotspot`.
+Now navigate to a git repository and run `git hotspot`.
 
