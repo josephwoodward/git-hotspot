@@ -3,24 +3,29 @@ package hotspot
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"os"
 	"os/exec"
 	"sort"
+	"strings"
 	"sync"
 
 	"github.com/rodaine/table"
 )
 
-func Run(ctx context.Context, git GitCommands, limit int) error {
+func Run(ctx context.Context, git GitCommands, dir string, limit int) error {
 	_, err := parseConfig(git)
-
-	// List Files
-	result, err := git.Files()
 	if err != nil {
-		return err
+		return fmt.Errorf("parsing config: %w", err)
 	}
 
-	results := make(chan file)
+	// List Files
+	result, err := git.Files(dir)
+	if err != nil {
+		return fmt.Errorf("fail to list tracked files: %w", err)
+	}
+
+	results := make(chan trackedFile)
 
 	// Iterate over all Files in repo
 	files := bytes.Split(result, []byte("\n"))
@@ -30,14 +35,24 @@ func Run(ctx context.Context, git GitCommands, limit int) error {
 			continue
 		}
 
+		// ignore paths or files
+		file := string(f)
+		if strings.HasPrefix(file, "vendor/") {
+			continue
+		}
+
+		//if _, ok := ignorePaths[file]; ok {
+		//	continue
+		//}
+
 		wg.Add(1)
 		go func(f []byte) {
 			defer wg.Done()
-			modifications(ctx, string(f), results)
+			modifications(ctx, file, results)
 		}(f)
 	}
 
-	var total []file
+	var total []trackedFile
 	go func() {
 		for f := range results {
 			if len(f.dates) == 0 {
@@ -79,10 +94,10 @@ func Run(ctx context.Context, git GitCommands, limit int) error {
 }
 
 // modifications reports the number of edits
-func modifications(_ context.Context, path string, results chan<- file) {
+func modifications(_ context.Context, path string, results chan<- trackedFile) {
 	logs, err := exec.Command("git", "log", "--pretty=%ad", "--date=short", path).Output()
 	if err != nil {
-		results <- file{path: path, err: err, dates: nil}
+		results <- trackedFile{path: path, err: err, dates: nil}
 	}
 
 	l := bytes.Split(logs, []byte("\n"))
@@ -95,7 +110,7 @@ func modifications(_ context.Context, path string, results chan<- file) {
 	}
 
 	if len(dates) > 0 {
-		results <- file{path: path, dates: dates}
+		results <- trackedFile{path: path, dates: dates}
 	}
 
 	return
@@ -107,7 +122,7 @@ func parseConfig(cli GitCommands) (map[string]struct{}, error) {
 		return nil, err
 	}
 
-	ignores := bytes.Split(result, []byte("\n"))
+	ignores := bytes.Split(result, []byte(","))
 	paths := map[string]struct{}{}
 
 	for _, v := range ignores {

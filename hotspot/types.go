@@ -1,12 +1,12 @@
 package hotspot
 
-type file struct {
+type trackedFile struct {
 	path  string
 	err   error
 	dates []string
 }
 
-type dataSlice []*file
+type dataSlice []*trackedFile
 
 // Len is part of sort.Interface.
 func (d dataSlice) Len() int {
@@ -25,5 +25,5 @@ func (d dataSlice) Less(i, j int) bool {
 
 type GitCommands interface {
 	Config() ([]byte, error)
-	Files() ([]byte, error)
+	Files(string) ([]byte, error)
 }

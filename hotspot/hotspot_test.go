@@ -9,7 +9,7 @@ import (
 func TestParseConfig(t *testing.T) {
 	// Arrange
 	cli := cliStub{config: func() ([]byte, error) {
-		return []byte("/vendor/\n/something/\n"), nil
+		return []byte("vendor,something,"), nil
 	}}
 
 	// Act
@@ -28,7 +28,7 @@ func (c cliStub) Config() ([]byte, error) {
 	return c.config()
 }
 
-func (c cliStub) Files() ([]byte, error) {
-	l := "/vendor/\n/something/"
+func (c cliStub) Files(string) ([]byte, error) {
+	l := "vendor,something"
 	return []byte(l), nil
 }

@@ -13,7 +13,8 @@ func TestHotspot(t *testing.T) {
 		t.Fatalf("failed getting current working directory: %v", err)
 	}
 
-	if err = hotspot.Run(context.Background(), dir, 0); err != nil {
+	git := hotspot.NewGitCommands()
+	if err = hotspot.Run(context.Background(), git, dir, 100); err != nil {
 		t.Fatal(err)
 	}
 }
